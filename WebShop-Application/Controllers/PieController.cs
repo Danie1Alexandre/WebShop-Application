@@ -1,6 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using WebShop_Application.Models;
 using WebShop_Application.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebShop_Application.Controllers
 {
@@ -15,17 +21,26 @@ namespace WebShop_Application.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List() 
+        // GET: /<controller>/
+        public IActionResult List()
         {
+            //ViewBag.CurrentCategory = "Cheese cakes";
 
+            //return View(_pieRepository.AllPies);
             PiesListViewModel piesListViewModel = new PiesListViewModel();
             piesListViewModel.Pies = _pieRepository.AllPies;
 
             piesListViewModel.CurrentCategory = "Cheese cakes";
             return View(piesListViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var pie = _pieRepository.GetPieById(id);
+            if (pie == null)
+                return NotFound();
+
+            return View(pie);
+        }
     }
-           
-
-
 }

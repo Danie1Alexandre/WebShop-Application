@@ -90,9 +90,6 @@ namespace WebShop_Application.Migrations
                     b.Property<string>("ShortDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("notes")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("PieId");
 
                     b.HasIndex("CategoryId");

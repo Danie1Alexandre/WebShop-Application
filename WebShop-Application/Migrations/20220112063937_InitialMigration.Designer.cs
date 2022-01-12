@@ -9,8 +9,8 @@ using WebShop_Application.Models;
 namespace WebShop_Application.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220110152428_new2")]
-    partial class new2
+    [Migration("20220112063937_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,9 +90,6 @@ namespace WebShop_Application.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ShortDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("notes")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PieId");
